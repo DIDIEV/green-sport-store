@@ -1,12 +1,27 @@
 import React from 'react';
+import ProductCard from './components/productCard';
+import conjuntoDep from './recursosVisuales/conjuntoDep.webp';
+import joggers from './recursosVisuales/josggers.webp';
+import Comprension from './recursosVisuales/compresion.webp';
 
 function App() {
-  const name1 = "Conjunto Deportivo de Mujer";
-  const desc1 = "Marca Lululemon, tallas S,M,L,XL,XXL.";
-  const name2 = "Camisa de Comprension";
-  const desc2 = "Marca Adidad, colores: Negro, azul, gris.";
-  const name3 = "Jogger";
-  const desc3 = "Marca Under Armour, unisex.";
+  const products = [
+    {
+      name: "Conjunto Deportivo de Mujer",
+      description: "Marca Lululemon, tallas S,M,L,XL,XXL.",
+      image: conjuntoDep
+    },
+    {
+      name: "Camisa de Compresión",
+      description: "Marca Adidas, colores: Negro, azul, gris.",
+      image: Comprension
+    },
+    {
+      name: "Jogger",
+      description: "Marca Under Armour, unisex.",
+      image: joggers
+    }
+  ];
 
   return (
     <div style={{
@@ -23,83 +38,14 @@ function App() {
         💪 Tienda de Ropa Deportiva GreenSport 🍀
       </h1>
 
-      {/* Producto 1 */}
-      <div style={{
-        backgroundColor: '#ffffff',
-        padding: '1rem',
-        marginBottom: '2rem',
-        borderRadius: '1rem',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        maxWidth: '600px',
-        margin: 'auto'
-      }}>
-        <h2>{name1}</h2>
-        <p>{desc1}</p>
-        <img
-          src="https://via.placeholder.com/3000"
-          style={{ width: '100%', borderRadius: '0.5rem' }}
+      {products.map((product, index) => (
+        <ProductCard
+          key={index}
+          name={product.name}
+          description={product.description}
+          image={product.image}
         />
-        <button style={{
-          marginTop: '1rem',
-          padding: '0.5rem 1rem',
-          backgroundColor: '#f44336',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '0.5rem'
-        }}>Comprar</button>
-      </div>
-
-      {/* Producto 2 */}
-      <div style={{
-        backgroundColor: '#ffffff',
-        padding: '1rem',
-        marginBottom: '2rem',
-        borderRadius: '1rem',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        maxWidth: '600px',
-        margin: 'auto'
-      }}>
-        <h2>{name2}</h2>
-        <p>{desc2}</p>
-        <img
-          src="https://via.placeholder.com/3000"
-          style={{ width: '100%', borderRadius: '0.5rem' }}
-        />
-        <button style={{
-          marginTop: '1rem',
-          padding: '0.5rem 1rem',
-          backgroundColor: '#f44336',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '0.5rem'
-        }}>Comprar</button>
-      </div>
-
-      {/* Producto 3 */}
-      <div style={{
-        backgroundColor: '#ffffff',
-        padding: '1rem',
-        marginBottom: '2rem',
-        borderRadius: '1rem',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        maxWidth: '600px',
-        margin: 'auto'
-      }}>
-        <h2>{name3}</h2>
-        <p>{desc3}</p>
-        <img
-          src="https://via.placeholder.com/3000"
-          style={{ width: '100%', borderRadius: '0.5rem' }}
-        />
-        <button style={{
-          marginTop: '1rem',
-          padding: '0.5rem 1rem',
-          backgroundColor: '#f44336',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '0.5rem'
-        }}>Comprar</button>
-      </div>
+      ))}
     </div>
   );
 }
